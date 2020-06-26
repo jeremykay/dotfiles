@@ -7,6 +7,7 @@ alias gc='git commit'
 alias zr='cd ~/dev/reverb'
 alias l="docker-compose -f $HOME/dev/local/docker-compose.yml"
 
+
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
