@@ -4,6 +4,9 @@ alias gs='git status'
 alias ga='git add .'
 alias gd='git diff'
 alias gc='git commit'
+alias gl='git log'
+alias gco='git checkout'
+alias gcob='git checkout -b'
 alias zr='cd ~/dev/reverb'
 alias l="docker-compose -f $HOME/dev/local/docker-compose.yml"
 

@@ -1,24 +1,26 @@
-[user]
-	name = Jeremy Kay
-	email = jeremykaybass@gmail.com
-[core]
-	excludesfile = /Users/jeremy/.gitignore_global
-	editor = subl -w
-	pager = less -R
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [alias]
-	co = checkout
-	br = branch
-	cm = commit
-	st = status
+  co = checkout
+  st = status
+  ci = commit
+  pu = pull --rebase
+  ps = push
+  br = branch
 [color]
-	ui = true
+  diff = auto
+  status = auto
+  branch = auto
+[core]
+  editor = code -w
+  autocrlf = input
+[apply]
+  whitespace = nowarn
+[web]
+  browser = open
+[include]
+  path = ~/.gituser
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[pager]
+  branch = cat
 [merge]
-	tool = subl
-[push]
-	default = simple
+	tool = code
