@@ -22,24 +22,33 @@ git_branch() {
     git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-find_git_dirty() {
-  local status=$(git status --porcelain 2> /dev/null)
-  if [[ "$status" != "" ]]; then
-    git_dirty='•'
+find_git_not_staged() {
+  local status=$(git status 2> /dev/null)
+  if [[ "$status" =~ "Changes not staged for commit" ]]; then
+    git_not_staged='•'
   else
-    git_dirty=''
+    git_not_staged=''
   fi
 }
 
-PROMPT_COMMAND="find_git_dirty; $PROMPT_COMMAND"
+find_git_to_be_committed() {
+  local status=$(git status 2> /dev/null)
+  if [[ "$status" =~ "Changes to be committed" ]]; then
+    git_to_be_committed='•'
+  else
+    git_to_be_committed=''
+  fi
+}
+
+PROMPT_COMMAND="find_git_not_staged; find_git_to_be_committed; $PROMPT_COMMAND"
 
 # TERMINAL PROMPT
 PS1="\[\e[0;95m\]\u\[\e[m\]"    # username
 PS1+=" "    # space
 PS1+="\[\e[0;92m\]\w\[\e[m\]"    # current directory
 PS1+="\[\e[0;36m\]\$(git_branch)\[\e[m\]"    # current branch
-PS1+="\[\e[0;31m\]\$git_dirty\[\e[m\]"
+PS1+="\[\e[0;31m\]\$git_not_staged\[\e[m\]"
+PS1+="\[\e[0;92m\]\$git_to_be_committed\[\e[m\]"
 PS1+="$ "    # end prompt
 export PS1;
 export CLICOL
-
