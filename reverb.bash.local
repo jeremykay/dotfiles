@@ -1,4 +1,6 @@
 
+source ~/jeremykay/dotfiles/.convox;
+
 alias la='ls -a'
 alias zr='cd ~/dev/reverb'
 alias l="docker-compose -f $HOME/dev/local/docker-compose.yml"
