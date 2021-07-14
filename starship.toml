@@ -2,7 +2,7 @@
 format = "[⏱ $duration]($style)"
 
 [git_branch]
-format = '\[[$symbol$branch]($style)\]'
+format = '\[[$branch]($style)\]'
 
 [git_status]
 format = '([$untracked](bold yellow)[$modified](bold red)[$staged](bold green))'
