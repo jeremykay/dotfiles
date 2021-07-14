@@ -1,0 +1,29 @@
+[cmd_duration]
+format = "[⏱ $duration]($style)"
+
+[git_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[git_status]
+format = '([$untracked](bold yellow)[$modified](bold red)[$staged](bold green))'
+untracked = "•"
+modified = "•"
+staged = "•"
+
+[golang]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[ruby]
+disabled = true
+
+[time]
+format = '\[[$time]($style)\]'
+
+[username]
+format = '\[[$user]($style)\]'

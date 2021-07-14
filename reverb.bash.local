@@ -68,8 +68,11 @@ alias gt='git t'
 alias gbg='git bisect good'
 alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+alias tilt="/usr/local/bin/tilt"
 
-
+# Go
+export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$(go env GOROOT)/bin
 
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
@@ -77,46 +80,49 @@ export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/
 # Add AWS
 export PATH="/usr/local/opt/awscli@1/bin:$PATH"
 
+# Add Tilt
+export PATH="/usr/local/Cellar/tilt/0.16.1/bin:$PATH"
+
 # GIT FUNCTIONS
-git_branch() {
-    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# git_branch() {
+#     git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+# }
 
-git_not_staged() {
-  local status=$(git status 2> /dev/null)
-  if [[ "$status" =~ "Changes not staged for commit" ]]; then
-    echo "•"
-  else
-    echo ""
-  fi
-}
+# git_not_staged() {
+#   local status=$(git status 2> /dev/null)
+#   if [[ "$status" =~ "Changes not staged for commit" ]]; then
+#     echo "•"
+#   else
+#     echo ""
+#   fi
+# }
 
-git_untracked() {
-  local status=$(git status 2> /dev/null)
-  if [[ "$status" =~ "Untracked files" ]]; then
-    echo "•"
-  else
-    echo ""
-  fi
-}
+# git_untracked() {
+#   local status=$(git status 2> /dev/null)
+#   if [[ "$status" =~ "Untracked files" ]]; then
+#     echo "•"
+#   else
+#     echo ""
+#   fi
+# }
 
-git_to_be_committed() {
-  local status=$(git status 2> /dev/null)
-  if [[ "$status" =~ "Changes to be committed" ]]; then
-    echo "•"
-  else
-    echo ""
-  fi
-}
+# git_to_be_committed() {
+#   local status=$(git status 2> /dev/null)
+#   if [[ "$status" =~ "Changes to be committed" ]]; then
+#     echo "•"
+#   else
+#     echo ""
+#   fi
+# }
 
-# TERMINAL PROMPT
-PS1="\[\e[0;95m\]\u\[\e[m\]"    # username
-PS1+=" "    # space
-PS1+="\[\e[0;92m\]\w\[\e[m\]"    # current directory
-PS1+="\[\e[0;36m\]\$(git_branch)\[\e[m\]"    # current branch
-PS1+="\[\e[0;33m\]\$(git_untracked)\[\e[m\]"
-PS1+="\[\e[0;31m\]\$(git_not_staged)\[\e[m\]"
-PS1+="\[\e[0;92m\]\$(git_to_be_committed)\[\e[m\]"
-PS1+="$ "    # end prompt
-export PS1;
-export CLICOL
+# # TERMINAL PROMPT
+# PS1="\[\e[0;95m\]\u\[\e[m\]"    # username
+# PS1+=" "    # space
+# PS1+="\[\e[0;92m\]\w\[\e[m\]"    # current directory
+# PS1+="\[\e[0;36m\]\$(git_branch)\[\e[m\]"    # current branch
+# PS1+="\[\e[0;33m\]\$(git_untracked)\[\e[m\]"
+# PS1+="\[\e[0;31m\]\$(git_not_staged)\[\e[m\]"
+# PS1+="\[\e[0;92m\]\$(git_to_be_committed)\[\e[m\]"
+# PS1+="$ "    # end prompt
+# export PS1;
+# export CLICOL
