@@ -27,3 +27,6 @@ format = '\[[$time]($style)\]'
 
 [username]
 format = '\[[$user]($style)\]'
+
+[battery]
+disabled = true
